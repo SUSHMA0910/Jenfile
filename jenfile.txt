@@ -1,0 +1,33 @@
+pipeline{
+   agent any
+     environment{
+         PATH = "/usr/share/maven"
+}
+
+   stages{
+     stage('build'){
+         steps{
+           sh 'mvn clean package'
+}
+}
+
+   stages{
+     stage('test'){
+         steps{
+           sh 'mvn test'
+}
+}
+
+   stages{
+     stage('deploy'){
+         steps{
+           sh 'make publish'
+       }  
+     }  
+   }
+  }
+ }
+}
+
+
+
